@@ -1,0 +1,28 @@
+Shot-Sensor
+
+Arduino-based shot sensor for long-distance shooting
+
+____________________________________________________
+PURPOSE OF THIS REPO:
+
+  When shooting at longer distances, it can be difficult to track bullet flight and spot exactly where a round hits. Several pieces of gear can help mitigate this difficulty, including shooting at steel targets, which make a distinct bell-tone when struck. 
+  
+  Obviously, it can be difficult to hear this tone at longer ranges, especially when there are other ambient sounds. 
+  
+  On 23 June 2014, Reddit user /u/Trinitrogen posted a link on /r/longrange to his Instructables writeup of making an Arduino-powered shot sensor that lights up a bigass bright LED when it detects a hit.
+  link to Reddit thread: http://www.reddit.com/r/longrange/comments/28vjpy/xpost_50_arduino_powered_impact_sensor_for_steel/
+  
+  The idea has appeal, but I wanted to soup up the light a little, as well as create a modular framework for it so the same microcontroller could run more than one sensor/light at a time. 
+  
+  
+______________________________________________________
+
+Please feel free to take my work here and create your own wonderful interpetations of it.
+
+FOR THE LOVE OF ALL THAT IS HOLY DO NOT BE A DICK. 
+I make no promises or guarantees about the functionality of any of the code or schematics here. 
+
+
+_______________________________________________________
+REVISION HISTORY:
+0x00: 26 JUNE 2014 - Barret Spangler - initial checkin of base files

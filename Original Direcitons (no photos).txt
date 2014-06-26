@@ -1,0 +1,62 @@
+TESTING THE ARDUINO:
+After downloading the Arduino Software onto your computer, follow the directions Here for Windows, or Here for OSX or Linux on how to connect and upload code to your Arduino. Once you've done so, go ahead and test it by following Their Blink Tutorial. Note the traditional Blink listed on the official Arduino site (and included with the IDE) won't work on this Micro Pro.
+
+Once your sure everything is working, you can go ahead and upload This Code onto the Arduino. It's an adaptation of the Arduino Knock tutorial. It adds a blink to the LED when a shot it sensed. If you plug the USB in after the vibration sensor is connected, you can open up the Serial Monitor and see what vibrations the Arduino is reading. The only variable that you might consider messing with is the threshold, which is how you define the sensitivity of the impact sensor. The number is from 0 to 1024. The lower the number, the more sensitive the impact sensor becomes. I've done a fair amount of experimenting and have found 20 to be a pretty good setting. It has worked on everything from .22LR at 100 yards, to .308 at 575 yards and hasn't yet given me a false positive.
+
+PIEZO VIBRATION SENSOR
+
+A piezo works by generating (quite a bit of) voltage when vibration is sensed, so its important that you also put the 1 megaohm resistor in parallel with it. This could be the "hardest" soldering you'll have to do with this project, as in my case the resistor leads and wires wouldn't fit in the same holes. So I soldered the resistor in first, using A0 and GND (next to RAW). Then the wires resistor leads. Really ugly, but it worked. Trim the leads off the bottoms of the resistor with some wire cutters and you should be good.
+
+Note in the picture above, the left side on the sensor is the positive side. I'm not sure if that matters. Also, don't clip it inside a radioshack Helping Hands, it might be damaged. I ended up taping it to the end of a table, with the leads hanging off the end. One more warning, be careful that your hot soldering iron don't damage the plastic.
+
+LEDs
+
+Picture of LEDs
+2014-05-28 17.29.41.jpg
+2014-05-28 17.30.53.jpg
+2014-05-28 17.33.01.jpg
+2014-05-28 18.13.53.jpg
+2014-06-21 16.04.58.jpg
+Choice of LED's is pretty important, you want to get the brightest ones you can find. Initially I just grabbed the super bright ones from Sparkfun, but I negleted to notice them only being 8000 millicandela. It wasn't visible past 150 yards, even through magnification. So I searched around and found these 5mm 5V Super Bright Red LEDs from hitechledworld on ebay. They are 20,000mcd which worked great out to 575 yards (the furthest I've been able to test). I hope to test to find out what the maximum distance is soon.
+
+Adafruit has a better tutorial than I could ever do about the basics of LEDs Here. If you want to learn exactly whats going on, take 30 minutes and check that out. If you want to skip right to the point, solder up a 100 ohm resistor to the negative side of the LED (the shorter leg), and another wire onto the positive side. These will eventually be soldered into the Arduino. I would have liked to use some heat shrink to insulate the leads, but I don't have a heat gun. Instead I do the poor mans way, and fold some electrical tape over the exposed wire, then trim it short. Works well enough.
+
+Finally, for mounting it, I taped it to a popsicle stick, and bent the LED forward. I then super glued a magnet near the bottom. I'll explain the magnet in the next slide.
+
+ASSEMBLY
+
+Picture of Assembly
+2014-05-28 17.52.42.jpg
+The top is slightly confusing, I took it to demonstrate that when not in use, you can still hide the 9V inside the tin, this way it stays a nice little compact unit. Normally when in use the battery would be on the bottom right side.
+
+At this point it is more or less a jigsaw puzzle. Snip off the plug on the end of the 9v battery holder, and solder the positive (red) side into the RAW hole, and the black ground wire into GND (I used the one just below the RXI hole). I also put a 3M Command strip underneath the battery holder to help keep it stay i place, but still allows me to pull it out when your installing or removing the battery. It's nearly impossible to install/remove the battery when the holder is inside the tin, so don't glue it in!
+
+I soldered the negative side of the LED to the GND (next to hole 2), and the positive side into Hole 5. If you chose a different pin for the LED, be sure you adjust the ledPin variable in the code. I also cut a small notch into the bottom of the tin to allow the LED wires a way out without pinching the top onto them.
+
+Once all the soldering is done, I put a strip of two sided foam tape on the back of the Arduino and mounted it inside the tin. I actually think I might have done a double layer just to space it out a little further.
+
+I also glued a magnet inside the tin, it's underneath the battery in the picture above. Originally I had actually placed two inside. I hoped the magnets would be strong enough to hold the whole unit onto the steel when shot at, but that was not the case. The first shot I took at the steel was with .308 at 100 yards, and I watched the hole unit fly off the back and into the berm. So it won't hold itself on while shooting, but it will stay up while you use both hands to rip some Duct Tape to secure it on.
+
+TESTING
+
+When testing the final product, it works best to put it on steel, and generate vibration with some other metal tool. Doing it with your hand is painful, and surprisingly tough to trigger it.
+
+Here is a couple videos of it in action.
+
+Bench Test, I'm hitting it twice to show that you need to hit it hard enough to break the threshold:  
+
+In Action being shot at by a 6.5 Creedmore @ 250 yards. I used a Phone Skope with my iPhone through a Vortex Nomad, and I was a really let down with the recording. It's extremely clear in person, and is even visible with the naked eye at 250 yards
+
+
+
+FUTURE IMPROVEMENTS
+
+There are two big improvements I hope to make in the future, first is weather proofing the device. I experimented with a couple ways to try to water proof the Altoids tin, but all were pretty unsuccessfull. So far the best idea I've had is to just put it inside a plastic bag when you mount. Seems like it would be effected, but I'm hoping theres a better alternative.
+
+The second is to maximize the viewable range. I think this thing will be extremely visible from far away, but I'm thinking there are ways to extend it even further. I've had some ideas, but they aren't nearly as cheap and easy to implement. You could have the Arduino trigger super bright LED flashlight using a relay, or have it trigger a camera flash unit (I think I've already seen a unit that does this). This is a challenge for another day.
+
+Another improvement would be switching to just using a standalone ATMEGA chip because this setup is so simple. This would knock like 15 dollars off the price.
+
+
+ 	
+
