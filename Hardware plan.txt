@@ -1,0 +1,34 @@
+Basic setup:
+
+Central pack:
+  Microcontroller
+  Battery Pack
+  Case
+  Mounting hardware
+  
+Sensor pack:
+  Piezo sensor
+  Mounting Hardware
+  
+Light Pack:
+  3W LED
+  Battery Pack
+  Relay
+  Mounting Hardware
+
+-------------------------
+FUTURE ENHANCEMENTS
+-------------------------  
+Wireless Transmitter Pack:
+  Wireless transceiver
+  Microcontroller shield
+  
+Wireless Receiver Pack
+  Wireless transceiver
+  Microcontroller
+  Microcontroller Shield
+  Light Packs
+  
+__________________________________________________________________________________________________________________________________________________________________________________________________________
+
+

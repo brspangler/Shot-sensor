@@ -1,0 +1,53 @@
+//Depending on what kind of Arduino you're using, it should be able to control from three to five independent steel targets with a piezo sensor pack and a light kit on each target
+// Each target will need to have the pinout defined explicitly. 
+
+
+// Target 1
+const int lightPin = 5;      // led connected to digital pin 5
+const int shotSensor = A0; // the piezo is connected to analog pin 0
+const int threshold = 20;  // threshold value to decide when the vibration should trigger the light
+int sensorReading = 0;      // variable to store the value read from the sensor pin
+int ledState = LOW;         // variable used to store the last LED status, to toggle the light
+unsigned long lastPeakTime = 0; //used for calculating peak
+int currentPeak = 0;           
+int blinkCounter = 0;
+ 
+void setup() {
+ pinMode(ledPin, OUTPUT); // declare the ledPin as as OUTPUT
+ Serial.begin(9600);       // use the serial port for debugging
+}
+ 
+void loop() {
+  // read the sensor and store it in the variable sensorReading:
+  sensorReading = analogRead(knockSensor);    
+  if (sensorReading > currentPeak) {
+    currentPeak = sensorReading;
+  }
+ 
+  // if the sensor reading is greater than the threshold:
+if (sensorReading >= threshold) {
+        Serial.print(sensorReading);
+        Serial.println(" Knock! ");
+ 
+                while(blinkCounter <= 3)
+                {
+                Serial.println(blinkCounter);
+                digitalWrite(ledPin, HIGH);
+                delay(250);
+                digitalWrite(ledPin, LOW);
+                delay(250);
+                blinkCounter++;
+                }
+        blinkCounter = 0;
+        delay(50);  
+  }
+    //DEBUG CODE THAT GETS WRITTEN TO SERIAL, NOT NECESSARY TO LEAVE IN
+        if(millis() - lastPeakTime > 2000) {
+        Serial.print("Peak value: ");
+        Serial.println(currentPeak);
+        lastPeakTime = millis();
+        currentPeak = 0;
+        }
+ 
+ 
+}
