@@ -5,7 +5,7 @@ Arduino-based shot sensor for long-distance shooting
 ____________________________________________________
 PURPOSE OF THIS REPO:
 
-  When shooting at longer distances, it can be difficult to track bullet flight and spot exactly where a round hits. Several pieces of gear can help mitigate this difficulty, including shooting at steel targets, which make a distinct bell-tone when struck. 
+  When shooting at longer distances, it can be difficult to track bullet flight and spot exactly where a round hits. Several pieces of gear can help mitigate this difficulty- including shooting at steel targets, which make a distinct bell-tone when struck. 
   
   Obviously, it can be difficult to hear this tone at longer ranges, especially when there are other ambient sounds. 
   
@@ -25,4 +25,5 @@ I make no promises or guarantees about the functionality of any of the code or s
 
 _______________________________________________________
 REVISION HISTORY:
-0x00: 26 JUNE 2014 - Barret Spangler - initial checkin of base files
+0x00: 26 JUN 2014 - Barret Spangler - initial checkin of base files
+0x01: 14 DEC 2014 - Barret Spangler - Updated scripts, added "One target two light" script and directions.

@@ -8,12 +8,14 @@ Central pack:
   
 Sensor pack:
   Piezo sensor
+  1M Ohm resistor
   Mounting Hardware
   
 Light Pack:
   3W LED
   Battery Pack
-  Relay
+  2n3604 NPN transistor
+  330 Ohm resistor
   Mounting Hardware
 
 -------------------------

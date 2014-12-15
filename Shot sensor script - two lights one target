@@ -1,9 +1,10 @@
 //Depending on what kind of Arduino you're using, it should be able to control from three to five independent steel targets with a piezo sensor pack and a light kit on each target
 // Each target will need to have the pinout defined explicitly. 
-
+// This script puts two lights on a single steel target and piezo sensor
 
 // Target 1
-const int lightPin = 5;      // led connected to digital pin 5
+const int onePin = 5;      // First light array connected to digital pin 5
+const int twoPin = 3;      //  Second light array connected to digital pin 3
 const int shotSensor = A0; // the piezo is connected to analog pin 0
 const int threshold = 20;  // threshold value to decide when the vibration should trigger the light
 int sensorReading = 0;      // variable to store the value read from the sensor pin
@@ -12,29 +13,34 @@ int currentPeak = 0;
 int blinkCounter = 0;
  
 void setup() {
- pinMode(lightPin, OUTPUT); // declare the ledPin as as OUTPUT
- Serial.begin(9600);       // use the serial port for debugging - can be removed once debugging is not needed
+ pinMode(onePin, OUTPUT); // declare the onePin as as OUTPUT
+ pinMode(twoPin, OUTPUT); // declare the twoPin as as OUTPUT
+ Serial.begin(9600);       // use the serial port for debugging - can be removed once debugging is not needed 
 }
  
 void loop() {
   // read the sensor and store it in the variable sensorReading:
   sensorReading = analogRead(shotSensor);    
-  if (sensorReading > currentPeak) 
-	{
-		currentPeak = sensorReading;
-	}
+	if (sensorReading > currentPeak) 
+		{
+			currentPeak = sensorReading;
+		}
  
   // if the sensor reading is greater than the threshold:
 	if (sensorReading >= threshold) 
 		{
 			Serial.print(sensorReading); //Can be removed once debugging is not needed
-			Serial.println(" Knock! "); //Can be removed once debugging is not needed
+			Serial.println(" Knock! ");  //Can be removed once debugging is not needed
 			while(blinkCounter <= 3)
 				{
-					Serial.println(blinkCounter); //Can be removed once debugging is not needed
-					digitalWrite(lightPin, HIGH);
+					Serial.println(blinkCounter);  //Can be removed once debugging is not needed
+					digitalWrite(onePin, HIGH);
 					delay(250);
-					digitalWrite(lightPin, LOW);
+					digitalWrite(onePin, LOW);
+					delay(250);
+					digitalWrite(twoPin, HIGH);
+					delay(250);
+					digitalWrite(twoPin, LOW);
 					delay(250);
 					blinkCounter++;
 				}
@@ -42,7 +48,7 @@ void loop() {
 			delay(50);  
 		}
     //DEBUG CODE THAT GETS WRITTEN TO SERIAL, NOT NECESSARY TO LEAVE IN
-    if(millis() - lastPeakTime > 2000) 
+	if(millis() - lastPeakTime > 2000) 
 		{
 			Serial.print("Peak value: ");
 			Serial.println(currentPeak);

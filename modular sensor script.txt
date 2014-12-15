@@ -1,3 +1,4 @@
+//DOES NOT WORK AT THIS TIME
 const int ledPin = 5;      // led connected to digital pin 5
 const int knockSensor = A0; // the piezo is connected to analog pin 0
 const int threshold = 20;  // threshold value to decide when the detected sound is a knock or not
